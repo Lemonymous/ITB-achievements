@@ -329,7 +329,8 @@ function this:AddChievo(chievo)
 	initChievos(self)
 	table.insert(lmn_achievements.chievos[mod.id], chievo)
 	
-	chievo.TriggerChievo = function(flag) self:TriggerChievo(chievo.id, flag) end
+	chievo.Trigger =  function(flag) self:TriggerChievo(chievo.id, flag) end
+	chievo.TriggerChievo = chievo.Trigger
 	chievo.Reset = function() return self:TriggerChievo(chievo.id, false) end
 	chievo.GetStatus = function() return self:GetChievoStatus(chievo.id) end
 	chievo.GetTip = function(reset) return self:GetChievoTipFormatted(chievo.id, reset) end
