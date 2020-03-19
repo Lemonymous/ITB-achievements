@@ -448,8 +448,12 @@ function this:GetChievoProgress(chievoId)
 	if chievo.objective then
 		local result = {}
 		
-		for objId, _ in pairs(chievo.objective) do
+		for objId, target in pairs(chievo.objective) do
 			result[objId] = readData(chievo.id .."_".. objId)
+			
+			if result[objId] == nil then
+				result[objId] = type(target) == 'number' and 0 or false
+			end
 		end
 		
 		return result
