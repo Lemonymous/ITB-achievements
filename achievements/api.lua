@@ -399,6 +399,10 @@ function this:TriggerAll(flag)
 	end
 end
 
+function this:ResetChievo(chievoId)
+	self:TriggerChievo(chievoId, false)
+end
+
 function this:ResetAll()
 	self:TriggerAll(false)
 end
