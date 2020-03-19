@@ -330,6 +330,7 @@ function this:AddChievo(chievo)
 	table.insert(lmn_achievements.chievos[mod.id], chievo)
 	
 	chievo.TriggerChievo = function(flag) self:TriggerChievo(chievo.id, flag) end
+	chievo.Reset = function() return self:TriggerChievo(chievo.id, false) end
 	chievo.GetStatus = function() return self:GetChievoStatus(chievo.id) end
 	chievo.GetTip = function(reset) return self:GetChievoTipFormatted(chievo.id, reset) end
 end
@@ -395,6 +396,10 @@ function this:TriggerAll(flag)
 			end
 		end
 	end
+end
+
+function this:ResetAll()
+	self:TriggerAll(false)
 end
 
 -- returns true if achievement is completed, or false otherwise.
